@@ -182,7 +182,7 @@ This ensures grounded responses instead of silent hallucinations.
 ## 1. Clone Repository
 
 ```bash
-git clone <your_repo_link>
+git clone https://github.com/swaroopmore/potens-intern-aiml-swaroop-more
 ```
 
 ---
