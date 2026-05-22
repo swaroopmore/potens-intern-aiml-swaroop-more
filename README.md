@@ -1,4 +1,4 @@
-# 🏏 Cricket RAG System
+#  Cricket RAG System
 
 An AI-powered Retrieval-Augmented Generation (RAG) system for cricket documents using FastAPI, ChromaDB, Groq LLMs, semantic search, and multilingual support.
 
@@ -8,23 +8,23 @@ Built as part of the Potens AI/ML Internship Assignment.
 
 # Features
 
-## ✅ Document Question Answering
+##  Document Question Answering
 - Ask questions about cricket laws, IPL rules, DLS methodology, and playing conditions.
 - Answers are grounded strictly in retrieved document context.
 
-## ✅ Citation Support
+##  Citation Support
 Every answer includes:
 - source file
 - page number
 - retrieved snippet
 
-## ✅ Contradiction Analysis
+##  Contradiction Analysis
 Compare two documents on a topic and determine:
 - contradictions
 - consistency
 - reasoning
 
-## ✅ Multilingual Support
+##  Multilingual Support
 Queries can be asked in:
 - English
 - Hindi
@@ -34,10 +34,10 @@ Queries can be asked in:
 
 The system responds in the same language as the user query.
 
-## ✅ Hallucination Prevention
+##  Hallucination Prevention
 If documents do not contain enough information, the system explicitly says so instead of generating fake answers.
 
-## ✅ Streamlit Frontend
+##  Streamlit Frontend
 Simple UI for:
 - asking questions
 - contradiction analysis
