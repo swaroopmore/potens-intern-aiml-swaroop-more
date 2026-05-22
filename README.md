@@ -218,7 +218,7 @@ pip install -r requirements.txt
 Create `.env`
 
 ```env
-GROQ_API_KEY=your_groq_api_key
+GROQ_API_KEY=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
 ```
 
 ---
