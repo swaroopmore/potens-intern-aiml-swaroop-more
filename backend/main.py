@@ -21,7 +21,11 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 # INITIALIZE FASTAPI
 # ==========================================
 
-app = FastAPI()
+app = FastAPI(
+    title="Cricket RAG System",
+    description="AI-powered cricket document question answering system with citations and contradiction analysis.",
+    version="1.0"
+)
 
 # ==========================================
 # INITIALIZE GROQ CLIENT
@@ -80,16 +84,16 @@ def ask_question(request: QuestionRequest):
 
     # Prompt
     prompt = f"""
-    You are a cricket document assistant.
+    You are a multilingual cricket document assistant.
 
-    Answer ONLY from the provided context.
-
-    If the context contains partial information,
-    answer using ONLY that information.
-
-    If the answer is completely missing,
-    reply:
-    "The documents do not contain enough information."
+    IMPORTANT RULES:
+    - Answer ONLY from the provided context.
+    - Answer in the SAME language as the user's question.
+    - If the context contains partial information,
+      answer using ONLY that information.
+    - If the answer is completely missing,
+      reply:
+      "The documents do not contain enough information."
 
     Context:
     {context}
@@ -160,18 +164,19 @@ def contradict_documents(request: ContradictRequest):
 
     # Prompt
     prompt = f"""
+    You are a cricket document comparison assistant.
+
     Compare the following two document contexts.
 
     Determine whether they conflict on the topic:
     "{request.topic}"
 
-    If they conflict:
-    Explain the contradiction clearly.
-
-    If they do not conflict:
-    Explain why they are consistent.
-
-    ONLY use the provided contexts.
+    IMPORTANT RULES:
+    - ONLY use the provided contexts.
+    - Clearly explain contradictions if present.
+    - If there is no contradiction,
+      explain why they are consistent.
+    - Keep the explanation concise but clear.
 
     ==============================
     DOCUMENT 1 CONTEXT
@@ -198,7 +203,7 @@ def contradict_documents(request: ContradictRequest):
         temperature=0
     )
 
-    # Return response
+    # Final response
     return {
         "topic": request.topic,
         "doc1": request.doc1,
